@@ -47,6 +47,7 @@ class BookingViewSetTest(TestCase):
         client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
         response = client.get(reverse('tables-list'))
         self.assertEqual(response.status_code, 200)
+        
     def test_create_booking_without_token(self):
         client = APIClient()
         response = client.post(reverse('tables-list'), {'name': 'John', 'no_of_guests': 3, 'booking_date': timezone.now() + timezone.timedelta(days=1)})
